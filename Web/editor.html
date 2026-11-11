@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link rel="stylesheet" href="stage.css">
+<style>
+html,body{background:#e9eaee;user-select:none;-webkit-user-select:none;cursor:default}
+@media (prefers-color-scheme:dark){html,body{background:#26272b}}
+#root{position:absolute;left:50%;top:50%;width:1920px;height:var(--H,1080px);transform-origin:0 0;box-shadow:0 6px 30px rgba(0,0,0,.28)}
+#root .slide{overflow:hidden}
+.edit .el iframe{pointer-events:none}
+.el.editing .txt{user-select:text;-webkit-user-select:text;cursor:text}
+.el-text .txt:empty::before{content:'טקסט';opacity:.35}
+#ov{position:absolute;left:0;top:0;width:1920px;height:var(--H,1080px);pointer-events:none;z-index:99999}
+.sb{position:absolute;outline:calc(2px*var(--inv)) solid #2f7bf6;pointer-events:none}
+.sb.ed{outline-style:dashed}
+.hd{position:absolute;width:calc(12px*var(--inv));height:calc(12px*var(--inv));background:#fff;border:calc(1.5px*var(--inv)) solid #2f7bf6;border-radius:50%;
+  margin:calc(-6px*var(--inv)) 0 0 calc(-6px*var(--inv));pointer-events:auto}
+.hd.rot{background:#2f7bf6;cursor:grab}
+.guide{position:absolute;background:#ff3b8b}
+.mq{position:absolute;border:calc(1px*var(--inv)) solid #2f7bf6;background:rgba(47,123,246,.12)}
+.hover{outline:calc(1px*var(--inv)) solid rgba(47,123,246,.5)}
+</style></head>
+<body class="edit">
+<div id="root"><div id="ov"></div></div>
+<script src="stage.js"></script>
+<script src="editor.js"></script>
+</body></html>

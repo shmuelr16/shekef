@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleName</key><string>שקף</string>
+  <key>CFBundleDisplayName</key><string>שקף</string>
+  <key>CFBundleExecutable</key><string>Shekef</string>
+  <key>CFBundleIdentifier</key><string>il.shmuel.shekef</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>1.0</string>
+  <key>CFBundleVersion</key><string>1</string>
+  <key>CFBundleIconFile</key><string>AppIcon</string>
+  <key>CFBundleDevelopmentRegion</key><string>he</string>
+  <key>CFBundleLocalizations</key><array><string>he</string></array>
+  <key>LSMinimumSystemVersion</key><string>14.0</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSPrincipalClass</key><string>NSApplication</string>
+  <key>LSApplicationCategoryType</key><string>public.app-category.productivity</string>
+  <key>NSAppleEventsUsageDescription</key><string>שקף משתמש ב-Keynote או ב-PowerPoint כדי להמיר קובצי Keynote ו-PowerPoint ישנים.</string>
+  <key>NSHumanReadableCopyright</key><string>הוכן ע״י שמואל</string>
+  <key>UTExportedTypeDeclarations</key>
+  <array><dict>
+    <key>UTTypeIdentifier</key><string>il.shmuel.shekef.deck</string>
+    <key>UTTypeDescription</key><string>מצגת שקף</string>
+    <key>UTTypeConformsTo</key><array><string>com.apple.package</string><string>public.composite-content</string></array>
+    <key>UTTypeTagSpecification</key><dict><key>public.filename-extension</key><array><string>shekef</string></array></dict>
+  </dict></array>
+  <key>CFBundleDocumentTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleTypeName</key><string>מצגת שקף</string>
+      <key>CFBundleTypeRole</key><string>Editor</string>
+      <key>LSHandlerRank</key><string>Owner</string>
+      <key>LSTypeIsPackage</key><true/>
+      <key>LSItemContentTypes</key><array><string>il.shmuel.shekef.deck</string></array>
+    </dict>
+    <dict>
+      <key>CFBundleTypeName</key><string>מצגת</string>
+      <key>CFBundleTypeRole</key><string>Viewer</string>
+      <key>LSHandlerRank</key><string>Alternate</string>
+      <key>LSItemContentTypes</key><array>
+        <string>org.openxmlformats.presentationml.presentation</string>
+        <string>com.microsoft.powerpoint.ppt</string>
+        <string>com.apple.iwork.keynote.key</string>
+        <string>com.apple.iwork.keynote.sffkey</string>
+        <string>org.oasis-open.opendocument.presentation</string>
+        <string>com.adobe.pdf</string>
+        <string>public.html</string>
+        <string>public.image</string>
+      </array>
+    </dict>
+  </array>
+</dict>
+</plist>

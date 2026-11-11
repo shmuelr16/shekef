@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link rel="stylesheet" href="stage.css"></head>
+<body class="static"><div id="root"></div>
+<script src="stage.js"></script>
+<script>
+const Render={
+  async show(slide,meta){
+    Stage.setDeck(meta);
+    const root=document.getElementById('root');root.innerHTML='';
+    const n=Stage.renderSlide(slide,{name:'static'});root.appendChild(n);
+    const waits=[];
+    n.querySelectorAll('img').forEach(i=>{if(i.getAttribute('src'))waits.push(i.decode().catch(()=>{}))});
+    n.querySelectorAll('iframe').forEach(f=>waits.push(new Promise(r=>{f.onload=()=>setTimeout(r,400);setTimeout(r,2500)})));
+    if(slide.bgImage)waits.push(new Promise(r=>{const i=new Image();i.onload=i.onerror=r;i.src=Stage.mediaURL(slide.bgImage)}));
+    waits.push(Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,1500))]));
+    await Promise.race([Promise.all(waits),new Promise(r=>setTimeout(r,5000))]);
+    await new Promise(r=>setTimeout(r,60));
+    return true;
+  },
+  hex(c){const m=c.match(/[\d.]+/g);if(!m)return '000000';return m.slice(0,3).map(v=>Math.round(+v).toString(16).padStart(2,'0')).join('')},
+  runs(){
+    const out={};
+    document.querySelectorAll('.el-text').forEach(n=>{
+      const t=n.querySelector('.txt'),paras=[];let cur=null;
+      const tcs=getComputedStyle(t);
+      const np=(blk)=>{const a=getComputedStyle(blk||t).textAlign;cur={align:a==='start'?'right':a==='end'?'left':a,runs:[]};paras.push(cur)};
+      const walk=(node)=>{
+        for(const c of node.childNodes){
+          if(c.nodeType===3){if(!c.nodeValue)continue;if(!cur)np(node===t?t:node);
+            const p=c.parentElement,cs=getComputedStyle(p);let u=false;for(let a=p;a&&a!==t.parentElement;a=a.parentElement){if(a.tagName==='U'||/underline/.test(a.style.textDecoration+a.style.textDecorationLine))u=true}
+            cur.runs.push({t:c.nodeValue.replace(/\n/g,' '),b:parseInt(cs.fontWeight)>=600,i:cs.fontStyle==='italic',u,color:this.hex(cs.color),size:parseFloat(cs.fontSize),font:cs.fontFamily.split(',')[0].replace(/['"]/g,'').trim()});
+          }else if(c.nodeType===1){
+            if(c.tagName==='BR'){if(!cur)np();cur.runs.push({br:true});continue}
+            const blk=/^(DIV|P|LI|H[1-6]|UL|OL|BLOCKQUOTE)$/.test(c.tagName);
+            if(blk){cur=null;np(c);walk(c);cur=null}else walk(c);
+          }
+        }
+      };
+      walk(t);
+      out[n.dataset.id]={paras:paras.filter((p,i)=>p.runs.length||i>0),lineHeight:parseFloat(tcs.lineHeight)/parseFloat(tcs.fontSize)||1.3};
+    });
+    return out;
+  }
+};
+webkit.messageHandlers.shekef.postMessage({type:'ready'});
+</script></body></html>
