@@ -5,17 +5,37 @@
 <h1 align="center">שקף</h1>
 
 <p align="center"><b>אפליקציית מק לעריכה ולהצגה של מצגות, בעברית מלאה מימין לשמאל.</b><br>
-קוד פתוח, רישיון MIT.</p>
+חינם, בלי אינטרנט, בלי חשבון. קוד פתוח, רישיון MIT.</p>
 
 ---
 
 ## מה זה
 
-שקף היא אפליקציה מקורית ל-macOS (Swift + SwiftUI, עם WKWebView לציור השקפים). היא נבנתה כדי לפתור בעיה אחת מעצבנת: מצגות בעברית עם הקראה, שבהן כפתור ההקראה פשוט עובד.
-
-פותחים בה מצגת קיימת או מתחילים מאפס, עורכים, ומציגים במסך מלא. הכל עובד בלי אינטרנט.
+שקף היא אפליקציה מקורית ל-macOS (Swift + SwiftUI, עם WKWebView לציור השקפים) לעריכה ולהצגה של מצגות. פותחים בה מצגת קיימת או מתחילים מאפס, עורכים, ומציגים במסך מלא.
 
 > **כרגע האפליקציה היא ל-Mac בלבד.** גרסה ל-Windows מתוכננת בהמשך.
+
+## למה עוד עורך מצגות
+
+מי שמכין מצגות בעברית מכיר את הבעיות בעורכים הקיימים:
+
+- **תשלום.** העורכים המובילים דורשים מנוי חודשי או שנתי, או נועלים חלק מהיכולות מאחורי תוכנית בתשלום.
+- **אינטרנט וחשבון.** עורכים שרצים בדפדפן לא שמישים בלי חיבור, ודורשים הרשמה והתחברות לפני שאפשר להתחיל.
+- **המצגת לא אצלך.** הקבצים נשמרים בענן של חברה אחרת, ולא תמיד ברור מי רואה אותם ומה קורה איתם.
+- **עברית כמחשבה שנייה.** ממשק שמתורגם חלקית, טקסט מימין לשמאל שמתהפך, סימני פיסוק שקופצים לצד הלא נכון.
+- **הקראה מסובכת.** כדי שכפתור ישמיע טקסט צריך להגדיר אובייקט שמע, טריגר ופעולה, וגם אז זה לא תמיד מתנהג אותו דבר בכל מחשב.
+- **כובד.** תוכנות גדולות ואיטיות, מלאות ביכולות שרוב האנשים לא צריכים.
+
+## מה שקף עושה אחרת
+
+- **חינם, לתמיד.** אין מנוי, אין גרסת פרימיום, אין פרסומות.
+- **מקומי לגמרי.** עריכה, הצגה, הקראה וייצוא עובדים בלי אינטרנט. אין חשבון ואין התחברות.
+- **הקבצים שלך.** כל מצגת נשמרת במחשב שלך, בתיקייה רגילה שאפשר להעתיק ולגבות.
+- **עברית קודם.** הממשק והשקפים בנויים מימין לשמאל מההתחלה.
+- **הקראה בלחיצה.** מסמנים "כפתור הקראה" על תיבת טקסט וזהו. אם צירפת קובץ שמע הוא מתנגן, ואם לא, המק מקריא בקול עברי.
+- **קוד פתוח.** אפשר לקרוא את הקוד, לשנות אותו ולבנות גרסה משלך.
+
+החריג היחיד לעבודה בלי אינטרנט: ייבוא של דף HTML שמפנה בעצמו לתמונות או לגופנים באינטרנט.
 
 ## מה היא יודעת לעשות
 
@@ -113,7 +133,7 @@ cd shekef
 
 ## English summary
 
-**Shekef** ("slide" in Hebrew) is a native macOS app for editing and presenting slide decks, with full right-to-left Hebrew support. It imports `pptx`, `odp`, `pdf`, `html`, `key`, `ppt` and images, exports `pptx`, `pdf` and `html`, and has a read-aloud button that plays an attached audio file or falls back to the Mac's offline Hebrew voice.
+**Shekef** ("slide" in Hebrew) is a native macOS app for editing and presenting slide decks, with full right-to-left Hebrew support. It is free, works fully offline, and needs no account or subscription. It imports `pptx`, `odp`, `pdf`, `html`, `key`, `ppt` and images, exports `pptx`, `pdf` and `html`, and has a read-aloud button that plays an attached audio file or falls back to the Mac's offline Hebrew voice.
 
 **macOS only for now. A Windows version is planned.** Open source under the MIT license.
 
