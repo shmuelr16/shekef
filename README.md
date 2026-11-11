@@ -91,9 +91,29 @@
 - `pdf`
 - `html`, קובץ אחד שנפתח בכל דפדפן ומציג את המצגת עם המעברים
 
-## התקנה
+## התקנה ל-Mac
 
-דרישות: macOS 14 ומעלה, וכלי הפיתוח של אפל (`xcode-select --install`).
+### הורדה (הדרך הקלה)
+
+**[⬇️ הורדת שקף ל-Mac](https://github.com/shmuelr16/shekef/releases/latest/download/Shekef.dmg)**
+
+1. פותחים את הקובץ `Shekef.dmg` שירד.
+2. גוררים את "שקף" לתיקיית Applications.
+3. פותחים את "שקף" מתיקיית Applications.
+
+דרישות: macOS 14 ומעלה. עובד על מק עם Apple Silicon ועל מק עם Intel.
+
+**בפתיחה הראשונה** macOS יציג אזהרה שהוא לא יכול לאמת את האפליקציה. זה קורה כי האפליקציה עדיין לא חתומה דרך Apple (חתימה כזאת עולה כסף). כדי לפתוח בכל זאת:
+
+1. סוגרים את האזהרה.
+2. נכנסים ל"הגדרות המערכת" ← "פרטיות ואבטחה".
+3. גוללים למטה ולוחצים "פתח בכל זאת" ליד השם "שקף".
+
+צריך לעשות את זה פעם אחת בלבד.
+
+### בנייה מקוד המקור
+
+דרישות: כלי הפיתוח של אפל (`xcode-select --install`).
 
 ```bash
 git clone https://github.com/shmuelr16/shekef.git
@@ -101,11 +121,10 @@ cd shekef
 ./build.sh install
 ```
 
-הסקריפט בונה את האפליקציה (ל-Intel ול-Apple Silicon), מתקין אותה ב-`/Applications/שקף.app`, ומשם פותחים אותה בלחיצה כפולה כמו כל אפליקציה.
+הסקריפט בונה את האפליקציה ומתקין אותה ב-`/Applications/שקף.app`. אפליקציה שנבנתה במחשב שלך נפתחת בלי אזהרה.
 
-בלי הפרמטר `install` הסקריפט רק בונה, והתוצאה נמצאת ב-`build/שקף.app`.
-
-האפליקציה חתומה בחתימה מקומית בלבד (לא דרך Apple). כשבונים אותה במחשב שלך היא נפתחת רגיל. אם מעתיקים אותה ממחשב אחר, צריך בפעם הראשונה ללחוץ עליה בכפתור ימני ולבחור "פתח".
+- `./build.sh` רק בונה, והתוצאה ב-`build/שקף.app`.
+- `./build.sh dmg` יוצר גם קובץ התקנה `build/Shekef.dmg`.
 
 ## איפה נשמרות המצגות
 
@@ -155,4 +174,4 @@ cd shekef
 
 **macOS only for now. A Windows version is planned.** Open source under the MIT license.
 
-Install: `git clone https://github.com/shmuelr16/shekef.git && cd shekef && ./build.sh install` (requires macOS 14+ and the Xcode command line tools).
+Install: download [Shekef.dmg](https://github.com/shmuelr16/shekef/releases/latest/download/Shekef.dmg), drag the app to Applications, and on first launch allow it under System Settings → Privacy & Security → Open Anyway (the app is not notarized yet). Or build from source: `./build.sh install` (macOS 14+, Xcode command line tools).

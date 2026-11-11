@@ -1,5 +1,5 @@
 #!/bin/bash
-# בונה את שקף.app. עם הפרמטר install: מתקין ב-/Applications.
+# בונה את שקף.app.  install: מתקין ב-/Applications.  dmg: יוצר קובץ התקנה build/Shekef.dmg
 set -e
 cd "$(dirname "$0")"
 # בנייה אוניברסלית: Intel + Apple Silicon
@@ -26,4 +26,13 @@ if [ "$1" = "install" ]; then
   cp -R "$APP" "/Applications/שקף.app"
   /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f "/Applications/שקף.app"
   echo "installed: /Applications/שקף.app"
+fi
+if [ "$1" = "dmg" ]; then
+  STAGE="build/dmg"
+  rm -rf "$STAGE" build/Shekef.dmg && mkdir -p "$STAGE"
+  cp -R "$APP" "$STAGE/"
+  ln -s /Applications "$STAGE/Applications"
+  hdiutil create -volname "שקף" -srcfolder "$STAGE" -ov -format UDZO build/Shekef.dmg >/dev/null
+  rm -rf "$STAGE"
+  echo "dmg: build/Shekef.dmg"
 fi
